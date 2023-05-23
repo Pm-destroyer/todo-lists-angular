@@ -1,0 +1,16 @@
+<h5 [ngClass]="{ strike: !todo.active }">
+  {{ todo.sno }}. {{ todo.title }} ({{ todo.date | date : "dd/MM/YYYY" }})
+</h5>
+<p [ngClass]="{ strike: !todo.active }">{{ todo.desc }}</p>
+<div class="form-check my-2">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    id="markAsDone"
+    name="markAsDone"
+    [checked]="!todo.active"
+    (click)="onTodoCheck(todo)"
+  />
+  <label class="form-check-label" for="markAsDone"> Mark as done </label>
+</div>
+<button class="btn btn-sm btn-danger" (click)="todoDelete(todo)">Delete</button>
