@@ -25,6 +25,7 @@ export class AddTodoComponent {
   });
 
   onSubmit() {
+    console.log(this.todoForm.get('title')?.hasValidator(Validators.required));
     if (this.todoForm.invalid) {
       this.display = true;
     } else {

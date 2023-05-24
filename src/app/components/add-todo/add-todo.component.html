@@ -26,10 +26,17 @@
         formControlName="title"
         placeholder="Enter Title"
       />
-      <em *ngIf="todoForm.get('title')?.invalid && display" style="color: red"
-        >Title length must be between 3 to 50 characters and must not contain
-        special characters</em
+      <em
+        *ngIf="todoForm.get('title')?.errors?.['required'] && display; else elseblock"
+        style="color: red"
+        >This field is required</em
       >
+      <ng-template #elseblock>
+        <em *ngIf="todoForm.get('title')?.invalid && display" style="color: red"
+          >Title length must be between 3 to 50 characters and must not contain
+          special characters</em
+        >
+      </ng-template>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
@@ -41,7 +48,7 @@
         rows="3"
       ></textarea>
       <em *ngIf="todoForm.get('desc')?.invalid && display" style="color: red"
-        >This is a required field</em
+        >This field is required</em
       >
     </div>
 
